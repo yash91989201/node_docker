@@ -12,6 +12,7 @@ services:
   node-app:
     # path of the docker file to build the container from
     build: .
+    image: yash6370/node_docker_app
     volumes:
       - ./:/app
     environment:
