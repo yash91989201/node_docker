@@ -13,5 +13,11 @@ services:
         NODE_ENV: production
       environment:
         - NODE_ENV=production
+        - SESSION_SECRET=${SESSION_SECRET}
 
     command: [ "/bin/sh", "-c", "npm run build;npm start" ]
+
+  mongo-db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
