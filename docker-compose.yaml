@@ -14,13 +14,19 @@ services:
     build: .
     volumes:
       - ./:/app
-    env_file:
-      - ./.env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - SESSION_SECRET=${SESSION_SECRET}
+    # env_file:
+    #   - ./.env
     depends_on:
       - mongodb
   # below are the configs that are specific to mongo container
   mongodb:
     image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     volumes:
       - mongo-db:/data/db
   # below are the configs that are specific to redis container
