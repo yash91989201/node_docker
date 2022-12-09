@@ -1,0 +1,24 @@
+version: "3"
+# containers are spceified as services
+services:
+
+  nginx:
+    ports:
+      - 3000:80
+  # below we will add configs that are specific to node-app container
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=yash
+      - MONGO_PASSWORD=password
+    command: npm run dev
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=yash
+      - MONGO_INITDB_ROOT_PASSWORD=password

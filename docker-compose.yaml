@@ -1,0 +1,36 @@
+version: "3"
+# containers are spceified as services
+services:
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - 3000:80
+    volumes:
+      - ./src/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+  # below we will add configs that are specific to node-app container
+  node-app:
+    # path of the docker file to build the container from
+    build: .
+    volumes:
+      - ./:/app
+    env_file:
+      - ./.env
+    depends_on:
+      - mongodb
+  # below are the configs that are specific to mongo container
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=yash
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-db:/data/db
+  # below are the configs that are specific to redis container
+  redis:
+    image: redis
+
+volumes:
+  # listing out all the volumes so that other containers can access it
+  mongo-db:
+  nginx:

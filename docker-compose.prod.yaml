@@ -1,0 +1,17 @@
+version: "3"
+# containers are spceified as services
+services:
+
+  nginx:
+    ports:
+      - 80:80
+  # below we will add configs that are specific to node-app container
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+      environment:
+        - NODE_ENV=production
+
+    command: [ "/bin/sh", "-c", "npm run build;npm start" ]
