@@ -1,12 +1,16 @@
 version: "3"
 # containers are spceified as services
 services:
-
   nginx:
     ports:
       - 80:80
   # below we will add configs that are specific to node-app container
   node-app:
+    deploy:
+      replicas: 8
+      restart_policy:
+        condition: any
+      update_config:
     build:
       context: .
       args:
