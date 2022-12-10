@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 // router imports
 import post_router from "./routes/post";
 import auth_router from "./routes/auth";
+import type { Request, Response } from "express";
 // config imports
 import { MONGODB_URI, REDIS_URL, SESSION_SECRET } from "./config";
 dotenv.config();
@@ -46,6 +47,11 @@ app.use(
   })
 );
 
+app.get("/api/v1/test", (req: Request, res: Response) => {
+  res
+    .status(200)
+    .json({ success: true, message: "hello ! this is from test route" });
+});
 app.use("/api/v1/post", post_router);
 app.use("/api/v1/user", auth_router);
 
