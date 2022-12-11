@@ -4,7 +4,7 @@ const MONGO_PORT = process.env.MONGO_PORT || 27017;
 // const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 
 // const MONGODB_URI = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/postDb`;
-const MONGODB_URI = `mongodb://yash:password@${MONGO_IP}:${MONGO_PORT}/node_db?authSource=admin`;
+const MONGODB_URI = `mongodb://yash:password@${MONGO_IP}:${MONGO_PORT}`;
 
 const REDIS_HOST = process.env.REDIS_URL || "redis";
 const REDIS_PORT = Number(process.env.REDIS_PORT) || 6379;
