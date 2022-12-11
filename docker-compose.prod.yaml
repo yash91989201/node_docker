@@ -7,7 +7,7 @@ services:
   # below we will add configs that are specific to node-app container
   node-app:
     deploy:
-      replicas: 8
+      replicas: 2
       restart_policy:
         condition: any
       update_config:
