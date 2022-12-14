@@ -56,9 +56,7 @@ app.use("/api/v1/post", post_router);
 app.use("/api/v1/user", auth_router);
 
 mongoose
-  .connect(MONGODB_URI, {
-    authSource: "admin",
-  })
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("Connected to mongodb.");
   })
