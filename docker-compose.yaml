@@ -17,7 +17,7 @@ services:
       - ./:/app
     environment:
       - NODE_ENV=production
-      - SESSION_SECRET=lkjgsdlgjhdlgkjsdhlgkjhsdlgkjh
+      - SESSION_SECRET=thisissomesupersecretsession
     # env_file:
     #   - ./.env
     depends_on:
