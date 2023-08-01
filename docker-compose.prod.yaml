@@ -6,13 +6,6 @@ services:
       - 80:80
   # below we will add configs that are specific to node-app container
   node-app:
-    deploy:
-      replicas: 2
-      restart_policy:
-        condition: any
-      update_config:
-        parallelism: 2
-        delay: 15s
     build:
       context: .
       args:
